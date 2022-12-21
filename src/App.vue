@@ -114,7 +114,7 @@ export default {
     // uid: auth.currentUser.uid,
     items: [
       { title: 'Home', icon: 'mdi-home', view: '/' },
-      { title: 'About', icon: 'mdi-information-outline', view: '/about' },
+      { title: 'List Files', icon: 'mdi-note', view: '/list' },
     ],
   }),
 }

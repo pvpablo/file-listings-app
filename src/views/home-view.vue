@@ -52,13 +52,15 @@ export default {
   }),
   methods: {
     saveFile() {
-        const storageRef = ref(storage, this.form.fileName);
+        const storageRef = ref(storage, 'files/' + this.form.fileName)
         uploadBytes(storageRef, this.form.files[0]).then((snapshot) => {
+            console.log(snapshot)
             const entry = {
                 fileName: this.form.fileName,
                 bucket: snapshot.ref.bucket,
                 path: snapshot.ref.fullPath,
                 owner: auth.currentUser.uid,
+                createdAt: new Date()
             }
             addDoc(collection(firestore, "files"), entry).then((snapshot) => {
                 console.log("Saved Document " + snapshot)
